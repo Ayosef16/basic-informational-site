@@ -1,27 +1,28 @@
 const http = require("http");
 const fs = require("fs");
-const url = require("url");
 
 // Create the server
 const server = http.createServer((req, res) => {
   // Create the path variable
   let path = "./sites/";
-  const q = url.parse(req.url, true);
-  console.log(q);
 
   // Check what path the user is requesting
   switch (req.url) {
     case "/":
       path += "index.html";
+      res.statusCode = 200;
       break;
     case "/about":
       path += "about.html";
+      res.statusCode = 200;
       break;
     case "/contact-me":
       path += "contact-me.html";
+      res.statusCode = 200;
       break;
     default:
       path += "404.html";
+      res.statusCode = 404;
       break;
   }
 
